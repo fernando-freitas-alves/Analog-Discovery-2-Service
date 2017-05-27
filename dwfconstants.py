@@ -3,7 +3,7 @@
    Author:  Digilent, Inc.
    Revision:  10/17/2013
 
-   Must install:                       
+   Must install:
        Python 2.7
 """
 
