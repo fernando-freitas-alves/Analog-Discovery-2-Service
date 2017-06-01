@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
    DWFConstants (definitions file for DWF library)
    Author:  Digilent, Inc.
@@ -9,19 +11,19 @@
 
 from ctypes import *
 
-#HDWF
+# HDWF
 hdwfNone = c_int(0)
 
-#ENUMFILTER
+# ENUMFILTER
 enumfilterAll       = c_int(0)
 enumfilterEExplorer = c_int(1)
 enumfilterDiscovery = c_int(2)
 
-#DEVID
+# DEVID
 devidEExplorer  = c_int(1)
 devidDiscovery  = c_int(2)
 
-#DEVVER
+# DEVVER
 devverEExplorerC   = c_int(2)
 devverEExplorerE   = c_int(4)
 devverEExplorerF   = c_int(5)
@@ -29,7 +31,7 @@ devverDiscoveryA   = c_int(1)
 devverDiscoveryB   = c_int(2)
 devverDiscoveryC   = c_int(3)
 
-#TRIGSRC
+# TRIGSRC
 trigsrcNone                 = c_ubyte(0)
 trigsrcPC                   = c_ubyte(1)
 trigsrcDetectorAnalogIn     = c_ubyte(2)
@@ -56,7 +58,7 @@ DwfStateTriggered    = c_ubyte(3)
 DwfStateRunning      = c_ubyte(3)
 DwfStateDone         = c_ubyte(2)
 
-#STS
+# STS
 stsRdy		= c_ubyte(0)
 stsArm		= c_ubyte(1)
 stsDone		= c_ubyte(2)
@@ -69,32 +71,32 @@ stsError	= c_ubyte(8)
 stsBusy		= c_ubyte(9)
 stsStop		= c_ubyte(10)
 
-#ACQMODE
+# ACQMODE
 acqmodeSingle       = c_int(0)
 acqmodeScanShift    = c_int(1)
 acqmodeScanScreen   = c_int(2)
 acqmodeRecord       = c_int(3)
 
-#FILTER
+# FILTER
 filterDecimate = c_int(0)
 filterAverage  = c_int(1)
 filterMinMax   = c_int(2)
 
-#TRIGTYPE
+# TRIGTYPE
 trigtypeEdge         = c_int(0)
 trigtypePulse        = c_int(1)
 trigtypeTransition   = c_int(2)
 
-#TRIGCOND;
+# TRIGCOND;
 trigcondRisingPositive   = c_int(0)
 trigcondFallingNegative  = c_int(1)
 
-#TRIGLEN;
+# TRIGLEN;
 triglenLess       = c_int(0)
 triglenTimeout    = c_int(1)
 triglenMore       = c_int(2)
 
-#DWFERC;
+# DWFERC;
 dwfercNoErc                  = c_int(0)		#  No error occurred
 dwfercUnknownError           = c_int(1)		#  API waiting on pending API timed out
 dwfercApiLockTimeout         = c_int(2)		#  API waiting on pending API timed out
@@ -105,7 +107,7 @@ dwfercInvalidParameter1      = c_int(17)	#  Invalid parameter sent in API call
 dwfercInvalidParameter2      = c_int(18)	#  Invalid parameter sent in API call
 dwfercInvalidParameter3      = c_int(19)	#  Invalid parameter sent in API call
 
-#FUNC;
+# FUNC;
 funcDC       = c_ubyte(0)
 funcSine     = c_ubyte(1)
 funcSquare   = c_ubyte(2)
@@ -116,7 +118,7 @@ funcNoise    = c_ubyte(6)
 funcCustom   = c_ubyte(30)
 funcPlay     = c_ubyte(31)
 
-#ANALOGIO;
+# ANALOGIO;
 analogioEnable      = c_ubyte(1)
 analogioVoltage     = c_ubyte(2)
 analogioCurrent     = c_ubyte(3)

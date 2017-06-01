@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+
 from dwfconstants import *
 from ctypes import *
 import sys
 import time
+
 
 # get dwf
 if sys.platform.startswith("win"):
@@ -58,8 +61,8 @@ def deviceCloseAll():
 
 ###########################################################################################
 
-def analogInChannelConfigure(channel, offset, rng, freq, buffer, log = False):
-    if log:
+def analogInChannelConfigure(channel, offset, rng, freq, buffer, verbose = False):
+    if verbose:
         print 'CHANNEL ' + str(channel)
         print '  - Offset:     ' + str(offset) + ' V'
         print '  - Range:      ' + str(rng) + ' V'

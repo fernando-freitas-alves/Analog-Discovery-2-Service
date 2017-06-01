@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+
+import sys
+import service
+
+
+name = sys.argv[0]
+name = name[(name.rfind('/')+1):]
+args = sys.argv[1:]
+
+cmd = args[:1]
+while len(args) <= 5:
+    opt = args[1:]
+    opt = [o.split(',') for o in opt]
+    for i in range(len(opt)):
+        for j in range(len(opt[i])):
+            try:
+                opt[i][j] = int(opt[i][j])
+            except ValueError:
+                print 'Error: All options have to be numeric values'
+                cmd = []
+    daemon = service.daemon(*opt)
+    if not opt:
+        if cmd in [['V1'], ['V2']]:           daemon.get(cmd[0])
+        elif cmd == ['-start'] or not cmd:    daemon.start()
+        elif cmd == ['-stop']:                daemon.stop()
+        elif cmd == ['-restart']:             daemon.restart()
+        elif cmd == ['-status']:              daemon.status()
+        elif cmd == ['-h']:                   break
+        else:
+            print 'Unknown command'
+            break
+    elif len(opt) == 4:
+        if   cmd == ['-start']:               daemon.start()
+        elif cmd == ['-restart']:             daemon.restart()
+        else:                                 break
+    else:                                     break
+    sys.exit(0)
+
+print 'usage: %s [-h | -start | -status | -stop | -restart]' % name
+print '       %s (V1 | V2)' % name
+if cmd == ['-h']:
+    print ''
+    print 'optional arguments:'
+    print ' -start or no argument                                                               Start oscilloscope daemon with the following default properties:'
+    print '                                                                                       > offset:     0 V'
+    print '                                                                                       > range:     50 V'
+    print '                                                                                       > frequency: 20 MHz'
+    print '                                                                                       > buffer:     1 sample'
+    print ' -start offset[,offset2] range[,range2] frequency[,frequency2] buffer[,buffer2]      Start oscilloscope daemon with given number properties for both or each channel'
+    print ' -stop                                                                               Stop oscilloscope daemon'
+    print ' -restart                                                                            Restart oscilloscope daemon with same default properties of -start command'
+    print ' -restart offset[,offset2] range[,range2] frequency[,frequency2] buffer[,buffer2]    Restart oscilloscope daemon with given number properties for both or each channel'
+    print ' -status                                                                             Show if oscilloscope daemon is running'
+    print ' V1                                                                                  Show voltage value of the channel 1 in units of V'
+    print ' V2                                                                                  Show voltage value of the channel 2 in units of V'
+sys.exit(2)
