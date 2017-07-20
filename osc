@@ -21,20 +21,20 @@ while len(args) <= 5:
                 cmd = []
     daemon = service.daemon(*opt)
     if not opt:
-        if cmd in [['V1'], ['V2']]:           daemon.get(cmd[0])
-        elif cmd == ['-start'] or not cmd:    daemon.start()
-        elif cmd == ['-stop']:                daemon.stop()
-        elif cmd == ['-restart']:             daemon.restart()
-        elif cmd == ['-status']:              daemon.status()
-        elif cmd == ['-h']:                   break
+        if   cmd in [['V1'], ['V2']]:                daemon.get(cmd[0])
+        elif cmd in [['-start'],['-on']] or not cmd: daemon.start()
+        elif cmd in [['-stop'],['-off']]:            daemon.stop()
+        elif cmd in [['-restart'],['-r']]:           daemon.restart()
+        elif cmd in [['-status'],['-sta']]:          daemon.status()
+        elif cmd == ['-h']:                          break
         else:
             print 'Unknown command'
             break
     elif len(opt) == 4:
-        if   cmd == ['-start']:               daemon.start()
-        elif cmd == ['-restart']:             daemon.restart()
-        else:                                 break
-    else:                                     break
+        if   cmd in [['-start'],['-on']]:            daemon.start()
+        elif cmd in [['-restart'],['-r']]:           daemon.restart()
+        else:                                        break
+    else:                                            break
     sys.exit(0)
 
 print 'usage: %s [-h | -start | -status | -stop | -restart]' % name

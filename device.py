@@ -10,7 +10,7 @@ class Device:
         self.rng     = self.parsearg(rng,       50) # V
         self.freq    = self.parsearg(freq,    20e6) # Hz
         self.buffer  = self.parsearg(buffer,     1) # sample(s)
-        self.verbose = self.parsearg(verbose, False)
+        self.verbose = self.parsearg(verbose, True)
 
     def __enter__(self):
         return self
@@ -25,7 +25,7 @@ class Device:
     def start(self):
         deviceCloseAll()
         openDevice(-1)
-        for idx in [0, 1]:
+        for idx in [0]: #1]:
             analogInChannelConfigure(idx+1,
                                      self.offset[idx],
                                      self.rng[idx],
